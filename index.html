@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyForge AI</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">✦ StudyForge AI</p>
+          <h1>Turn notes, slides, docs, and sources into guided study.</h1>
+          <p class="hero-copy">
+            Drop in class materials, then instantly build flashcards, timed study sessions, AI voice-teacher lessons, quizzes, and practice tests.
+          </p>
+          <div class="hero-actions">
+            <a href="#materials" class="button primary">Add material</a>
+            <a href="#quiz" class="button secondary">Take quiz</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <span class="hero-icon">🎓</span>
+          <strong id="stats-materials">0 materials loaded</strong>
+          <span id="stats-generated">Generating study tools...</span>
+        </div>
+      </section>
+
+      <section id="materials" class="grid two-col">
+        <form class="panel" id="material-form">
+          <div class="section-title"><span>📥</span><h2>Add or drop study materials</h2></div>
+          <label>
+            Title
+            <input id="material-title" placeholder="Chapter 4 notes" required />
+          </label>
+          <label>
+            Type
+            <select id="material-type">
+              <option value="notes">Notes</option>
+              <option value="slides">Slide show</option>
+              <option value="docs">Document</option>
+              <option value="link">Link / source</option>
+            </select>
+          </label>
+          <label>
+            Paste notes, slide text, doc text, or source summary
+            <textarea id="material-content" placeholder="Paste the important text here..." required></textarea>
+          </label>
+          <div class="drop-zone">
+            <input id="file-input" type="file" accept=".txt,.md,.csv,.doc,.docx,.ppt,.pptx" />
+            <span>Upload text-based docs or slide exports</span>
+          </div>
+          <button class="button primary" type="submit">＋ Add material</button>
+        </form>
+
+        <div class="panel material-list">
+          <div class="section-title"><span>📚</span><h2>Your library</h2></div>
+          <div id="materials-list"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title"><span>🧠</span><h2>AI flashcards</h2></div>
+        <div class="cards-grid" id="flashcards"></div>
+      </section>
+
+      <section class="grid two-col">
+        <div class="panel">
+          <div class="section-title"><span>🎙️</span><h2>AI voice teacher</h2></div>
+          <p class="muted">Generate a spoken mini-lesson from your current materials using your browser's built-in speech voice.</p>
+          <button class="button primary" id="voice-button">▶ Start voice lesson</button>
+          <blockquote id="teacher-script" hidden></blockquote>
+        </div>
+
+        <div class="panel">
+          <div class="section-title"><span>⏱️</span><h2>Study session planner</h2></div>
+          <label>
+            <span id="minutes-label">Session length: 25 minutes</span>
+            <input id="minutes" type="range" min="15" max="60" step="5" value="25" />
+          </label>
+          <ol class="session-list" id="session-list"></ol>
+        </div>
+      </section>
+
+      <section id="quiz" class="panel">
+        <div class="section-title"><span>✅</span><h2>Practice quiz and test builder</h2></div>
+        <p class="muted" id="score-line">Use these questions as a quick quiz or assign the full set as a practice test.</p>
+        <div class="quiz-list" id="quiz-list"></div>
+      </section>
+    </main>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
